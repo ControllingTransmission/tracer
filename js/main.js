@@ -2,7 +2,7 @@
 function run()
 {
 	init();
-	objects = [Group.clone().open()]
+	objects = [SquaresGroup.clone().open()]
 	//objects = [Square.clone().open()]
 	animate()	
 	document.body.style.backgroundColor = "red"

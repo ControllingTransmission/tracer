@@ -4,15 +4,8 @@ Square = Thing.clone().newSlots({
 }).setSlots({
 	init: function()
 	{
-		/*
-		var dt = .002
-		this._rd = new THREE.Vector3(0, dt, dt)
-		this._t = 0
-		this._zd = 1
-		this._nextShift = 3*60
-		*/
+		Thing.init.apply(this)
 		this.setup()
-		//document.body.style.backgroundColor = "red"
 	},
 	
 	setup: function()
@@ -30,13 +23,11 @@ Square = Thing.clone().newSlots({
 
 	    this._object = new THREE.Mesh(geometry, material);
 	},
+
 /*
 	update: function() 
 	{	
-		this._object.rotation.add(this._rd)
-		this._object.position.z += this._zd
-
-		this._t ++		
+		Thing.update.apply(this)		
 	}
 	*/
 })
