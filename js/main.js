@@ -2,7 +2,7 @@
 function run()
 {
 	init();
-	objects = [SquaresGroup.clone().open()]
+	objects = [CubesGroup.clone().open()]
 	//objects = [Square.clone().open()]
 	animate()	
 	document.body.style.backgroundColor = "red"
@@ -58,20 +58,20 @@ function animate()
 	objects.forEach(function(obj) { obj.update() })
 	render();
 	
-	/*
-	if (Math.random()>.5)
-	{
-		document.body.style.backgroundColor = "red"
-	}
-	else if (Math.random()>.5)
-	{
-		document.body.style.backgroundColor = "white"
-	}
-	else
-	{
-		document.body.style.backgroundColor = "blue"
-	}
-	*/
+	
+	// if (Math.random()>.5)
+	// {
+	// 	document.body.style.backgroundColor = "red"
+	// }
+	// else if (Math.random()>.5)
+	// {
+	// 	document.body.style.backgroundColor = "white"
+	// }
+	// else
+	// {
+	// 	document.body.style.backgroundColor = "blue"
+	// }
+	
 
 }
 
