@@ -57,6 +57,22 @@ function animate()
 	TWEEN.update();
 	objects.forEach(function(obj) { obj.update() })
 	render();
+	
+	/*
+	if (Math.random()>.5)
+	{
+		document.body.style.backgroundColor = "red"
+	}
+	else if (Math.random()>.5)
+	{
+		document.body.style.backgroundColor = "white"
+	}
+	else
+	{
+		document.body.style.backgroundColor = "blue"
+	}
+	*/
+
 }
 
 function render()

@@ -3,7 +3,8 @@
 Mover = Proto.clone().newSlots({
 	protoType: "Mover",
 	thing: null,
-	t: null
+	t: null,
+	rate: 1
 }).setSlots({
 	init: function()
 	{
@@ -16,7 +17,7 @@ Mover = Proto.clone().newSlots({
 	
 	update: function() 
 	{	
-		this._t ++	
+		this._t += this._rate
 	}
 })
 
