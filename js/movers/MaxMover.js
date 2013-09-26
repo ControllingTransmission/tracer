@@ -2,7 +2,6 @@
 
 MaxMover = Mover.clone().newSlots({
 	protoType: "MaxMover",
-	thing: null,
 	rd: null,
 	zd: null
 }).setSlots({

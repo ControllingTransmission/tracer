@@ -12,6 +12,7 @@ SquaresGroup = Group.clone().newSlots({
 		Group.init.apply(this)
 		this.addMover(MaxMover.clone())
 		this.addMover(WaveMover.clone())
+		this.addMover(ColorMover.clone())
 		this.addSquares()
 	},
 	
@@ -26,7 +27,6 @@ SquaresGroup = Group.clone().newSlots({
 				s._object.scale.x = this._itemXScale
 				s._object.scale.y = this._itemYScale
 				s.addMover(MaxMover.clone())
-				s.addMover(XWaveMover.clone())
 				s._object.position.x += x*this._spacing
 				s._object.position.y += y*this._spacing
 				this.addItem(s)

@@ -33,6 +33,13 @@ Thing = Proto.clone().newSlots({
 	update: function() 
 	{			
 		this._movers.forEach(function (mover) { mover.update() })
+	},
+	
+	setColor: function (c)
+	{
+		var mat = this.object().material
+		mat.color = c
+		mat.needsUpdate = true
 	}
 })
 

@@ -2,7 +2,8 @@
 function run()
 {
 	init();
-	objects = [SquaresGroup.clone().open()]
+	objects = [SquaresGroup.clone().open(), SquaresGroup.clone().open()]
+	objects[0]._object.position.z = -1000
 	//objects = [Square.clone().open()]
 	animate()	
 	document.body.style.backgroundColor = "red"
@@ -17,7 +18,7 @@ function setupWebGl()
 	renderer = new THREE.WebGLRenderer({ antialias: true });
 	renderer.setSize(window.innerWidth, window.innerHeight);
 	container.appendChild(renderer.domElement);
-	scene = new THREE.Scene();	
+	scene = new THREE.Scene();
 }
 
 function init()
