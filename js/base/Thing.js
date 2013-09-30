@@ -13,13 +13,13 @@ Thing = Proto.clone().newSlots({
 
 	open: function()
 	{
-		scene.add(this._object)
+		Visual.scene().add(this._object)
 		return this
 	},	
 	
 	close: function()
 	{
-		scene.remove(this._object)
+		Visual.scene().remove(this._object)
 		return this
 	},
 	
@@ -37,9 +37,11 @@ Thing = Proto.clone().newSlots({
 	
 	setColor: function (c)
 	{
+		console.log("setting color")
 		var mat = this.object().material
 		mat.color = c
 		mat.needsUpdate = true
+		return this
 	}
 })
 

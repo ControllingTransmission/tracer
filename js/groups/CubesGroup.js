@@ -1,10 +1,11 @@
 
-SquaresGroup = Group.clone().newSlots({
+CubesGroup = Group.clone().newSlots({
 	protoType: "SquaresGroup",
 	items: null,
-	spacing: 550,
+	spacing: 500,
 	itemXScale: 1,
-	itemYScale: 1,
+	itemYScale: .1,
+	itemZScale: 1,
 	max: 5
 }).setSlots({
 	init: function()
@@ -12,7 +13,6 @@ SquaresGroup = Group.clone().newSlots({
 		Group.init.apply(this)
 		this.addMover(MaxMover.clone())
 		this.addMover(WaveMover.clone())
-		this.addMover(ColorMover.clone())
 		this.addSquares()
 	},
 	
@@ -23,10 +23,12 @@ SquaresGroup = Group.clone().newSlots({
 		{
 			for (var y = -max; y < max-1; y ++)
 			{
-				var s = Square.clone()
+				var s = Cube.clone()
 				s._object.scale.x = this._itemXScale
 				s._object.scale.y = this._itemYScale
+				s._object.scale.z = this._itemZScale
 				s.addMover(MaxMover.clone())
+				// s.addMover(XWaveMover.clone())
 				s._object.position.x += x*this._spacing
 				s._object.position.y += y*this._spacing
 				this.addItem(s)

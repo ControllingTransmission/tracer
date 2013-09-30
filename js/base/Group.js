@@ -38,8 +38,9 @@ Group = Thing.clone().newSlots({
 	
 	setColor: function (c)
 	{
+		console.log("setting group color")
 		this.items().forEach(function (item) { item.setColor(c) })
-
+		return this
 	}
 	
 })

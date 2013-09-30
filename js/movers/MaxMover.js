@@ -3,13 +3,14 @@
 MaxMover = Mover.clone().newSlots({
 	protoType: "MaxMover",
 	rd: null,
-	zd: null
+	zd: null,
+	speed: 2
 }).setSlots({
 	init: function()
 	{
 		Mover.init.apply(this)
 		var dt = .002
-		this._rd = new THREE.Vector3(0, dt, dt)
+		this._rd = new THREE.Vector3(0, dt*this._speed, dt*this._speed)
 		this._zd = 1
 		this._nextShift = 3*60
 	},
