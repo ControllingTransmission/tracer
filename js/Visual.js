@@ -15,7 +15,7 @@ Visual = Proto.clone().newSlots({
 	
 	run: function()
 	{
-		this._objects = [SquaresGroup.clone().open()]
+		this._objects = []
 		//this._objects = [SquaresGroup.clone().open(), SquaresGroup.clone().open()]
 		//this._objects[0]._object.position.z = -1000
 		this.animate()	

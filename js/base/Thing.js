@@ -2,6 +2,7 @@
 
 Thing = Proto.clone().newSlots({
 	protoType: "Thing",
+	open: false,
 	object: null,
 	movers: null,
 	t: 0
@@ -14,12 +15,23 @@ Thing = Proto.clone().newSlots({
 	open: function()
 	{
 		Visual.scene().add(this._object)
+		this._open = true
 		return this
 	},	
 	
 	close: function()
 	{
 		Visual.scene().remove(this._object)
+		this._open = false
+		return this
+	},
+
+	toggle: function()
+	{
+		if(this._open)
+			this.close()
+		else
+			this.open()
 		return this
 	},
 	

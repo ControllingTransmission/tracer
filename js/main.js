@@ -1,7 +1,5 @@
 
-<<<<<<< Updated upstream
 document.addEventListener("DOMContentLoaded", function () { Visual.go () }, false)
-=======
 function run()
 {
 	init();
@@ -52,6 +50,58 @@ function onWindowResize()
 	camera.aspect = window.innerWidth / window.innerHeight;
 	camera.updateProjectionMatrix();
 	renderer.setSize(window.innerWidth, window.innerHeight);
+}
+
+function initPostprocessing() {
+
+	postprocessing.scene = new THREE.Scene();
+
+	postprocessing.camera = new THREE.OrthographicCamera( window.innerWidth / - 2, window.innerWidth / 2,  window.innerHeight / 2, window.innerHeight / - 2, -10000, 10000 );
+	postprocessing.camera.position.z = 100;
+
+	postprocessing.scene.add( postprocessing.camera );
+
+	var pars = { minFilter: THREE.LinearFilter, magFilter: THREE.LinearFilter, format: THREE.RGBFormat };
+	postprocessing.rtTextureDepth = new THREE.WebGLRenderTarget( window.innerWidth, height, pars );
+	postprocessing.rtTextureColor = new THREE.WebGLRenderTarget( window.innerWidth, height, pars );
+
+
+
+	var bokeh_shader = THREE.BokehShader;
+
+	postprocessing.bokeh_uniforms = THREE.UniformsUtils.clone( bokeh_shader.uniforms );
+
+	postprocessing.bokeh_uniforms[ "tColor" ].value = postprocessing.rtTextureColor;
+	postprocessing.bokeh_uniforms[ "tDepth" ].value = postprocessing.rtTextureDepth;
+
+	postprocessing.bokeh_uniforms[ "textureWidth" ].value = window.innerWidth;
+
+	postprocessing.bokeh_uniforms[ "textureHeight" ].value = height;
+
+	postprocessing.materialBokeh = new THREE.ShaderMaterial( {
+
+		uniforms: postprocessing.bokeh_uniforms,
+		vertexShader: bokeh_shader.vertexShader,
+		fragmentShader: bokeh_shader.fragmentShader,
+		defines: {
+			RINGS: shaderSettings.rings,
+			SAMPLES: shaderSettings.samples
+		}
+
+	} );
+
+	postprocessing.quad = new THREE.Mesh( new THREE.PlaneGeometry( window.innerWidth, window.innerHeight ), postprocessing.materialBokeh );
+	postprocessing.quad.position.z = - 500;
+	postprocessing.scene.add( postprocessing.quad );
+
+}
+
+function shaderUpdate() {
+	postprocessing.materialBokeh.defines.RINGS = shaderSettings.rings;
+	postprocessing.materialBokeh.defines.SAMPLES = shaderSettings.samples;
+
+	postprocessing.materialBokeh.needsUpdate = true;
+
 }
 
 function animate() 
@@ -105,4 +155,3 @@ function setupBindings()
 		objects.forEach(function (obj) { if (obj.keydown) { obj.keydown(e) } })
 	})
 }
->>>>>>> Stashed changes
