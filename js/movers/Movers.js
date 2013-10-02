@@ -11,7 +11,7 @@ Movers = Mover.clone().newSlots({
 	
 // ------------------------------------------------------------------
 	
-ColorMover = Mover.clone().newSlots({
+BlueJitterColorMover = Mover.clone().newSlots({
 	protoType: "ColorMover",
 }).setSlots({
 	init: function()
@@ -35,7 +35,7 @@ ColorMover = Mover.clone().newSlots({
 	}
 })
 
-Movers.add(ColorMover)
+Movers.add(BlueJitterColorMover)
 
 // ------------------------------------------------------------------
 
@@ -219,3 +219,30 @@ YScaleMover = Mover.clone().newSlots({
 Movers.add(YScaleMover)
 
 
+// ------------------------------------------------------------------
+	
+WhiteJitterColorMover = Mover.clone().newSlots({
+	protoType: "WhiteJitterColorMover",
+}).setSlots({
+	init: function()
+	{
+		Mover.init.apply(this)
+	},
+	
+	object: function()
+	{
+		return this._thing._object
+	},
+	
+	update: function() 
+	{	
+		Mover.update.apply(this)
+		var mat = this.object().material
+		var c = Math.random()
+		mat.color = new THREE.Color().setRGB(c, c, c)
+		mat.needsUpdate = true
+		//this._t ++	
+	}
+})
+
+Movers.add(WhiteJitterColorMover)

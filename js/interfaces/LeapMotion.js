@@ -7,7 +7,7 @@ Leap.loop(function(obj) {
   var y = hand.palmPosition[1];
   var z = hand.palmPosition[2];
 
-  var hue = Math.round(x/2) % 360;
+  var hue = Math.round(x) % 360;
   var saturation = Math.round(y/3);
   var lightness = Math.round(z/2);
 

@@ -36,7 +36,7 @@ Visual = Proto.clone().newSlots({
 		this.addLayer(BackgroundGroup.clone())
 		this.addLayer(SquaresGroup.clone().open())
 		//this.addLayer(CubesGroup.clone().open())
-		//this.addLayer(ScanLinesGroup.clone().open())
+		this.addLayer(ScanLinesGroup.clone().open())
 		
 		this.animate()	
 		document.body.style.backgroundColor = "red"
