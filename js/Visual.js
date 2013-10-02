@@ -36,7 +36,7 @@ Visual = Proto.clone().newSlots({
 		this.addLayer(BackgroundGroup.clone())
 		this.addLayer(SquaresGroup.clone().open())
 		//this.addLayer(CubesGroup.clone().open())
-		this.addLayer(ScanLinesGroup.clone().open())
+		//this.addLayer(ScanLinesGroup.clone().open())
 		
 		this.animate()	
 		document.body.style.backgroundColor = "red"
@@ -46,8 +46,8 @@ Visual = Proto.clone().newSlots({
 	{
 		this.setScene(new THREE.Scene())
 		this.setupRenderer()
-		this.setupPerspectiveCamera()
-		//this.setupOrthoCamera()
+		//this.setupPerspectiveCamera()
+		this.setupOrthoCamera()
 		this.setupLight()
 		this.setupEvents()
 	},
@@ -61,20 +61,18 @@ Visual = Proto.clone().newSlots({
 		container.appendChild(this.renderer().domElement);
 	},
 
-	/*
 	setupOrthoCamera: function()
 	{
-		var width = 10000
-		var height = 10000
+		var width = 8000
+		var height = 8000
 		var near = -2000
 		var far = 2000
 		this.setCamera(new THREE.OrthographicCamera( width / - 2, width / 2, height / 2, height / - 2, near, far ))		
 		this.camera().position.x = 0;
 		this.camera().position.y = 0;
-		this.camera().position.z = -1200;
+		this.camera().position.z = 800;
 		this.camera().lookAt(new THREE.Vector3(0, 0, 0));		
 	},
-	*/
 		
 	setupPerspectiveCamera: function()
 	{		
@@ -177,8 +175,22 @@ Visual = Proto.clone().newSlots({
 	
 	keydown: function(e)
 	{
+		console.log("e.keyCode " + e.keyCode)
+		
+		if (e.keyCode == 186) // ;
+		{
+			this.setupOrthoCamera()
+			return 
+		}
+		
+		if (e.keyCode == 222) // '
+		{
+			this.setupPerspectiveCamera()
+			return 
+		}
+		
 		Keyboard.shiftKey = e.shiftKey
-		console.log("Keyboard.shiftKey " + Keyboard.shiftKey)
+		//console.log("Keyboard.shiftKey " + Keyboard.shiftKey)
 		// track down key to avoid key repeats
 		if (this.downKeys()[e.keyCode]) 
 		{

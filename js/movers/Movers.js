@@ -128,6 +128,12 @@ ZRotateMover = Mover.clone().newSlots({
 	protoType: "XRotateMover",
 	period: 100
 }).setSlots({
+	prepareToStop: function()
+	{
+		this.object().rotation.z = 0;
+		return this
+	},
+
 	update: function(dt) 
 	{	
 		this.object().rotation.z += dt/this.period()

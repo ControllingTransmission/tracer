@@ -15,6 +15,11 @@ Mover = Proto.clone().newSlots({
 		return this
 	},
 	
+	prepareToStop: function()
+	{
+		return this
+	},
+	
 	object: function()
 	{
 		return this._thing._object
