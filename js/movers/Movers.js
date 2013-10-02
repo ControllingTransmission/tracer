@@ -39,19 +39,36 @@ Movers.add(ColorMover)
 
 // ------------------------------------------------------------------
 
-InterleveMover = Mover.clone().newSlots({
-	protoType: "InterleveMover",
-	amplitude: 200,
-	period: 100
+YInterleveMover = Mover.clone().newSlots({
+	protoType: "YInterleveMover",
+	speed: 10,
 }).setSlots({
 	update: function() 
 	{	
-
+		var direction = this.thing().groupY() % 2 == 0 ? 1 : -1
+		this.object().position.x += direction * this.speed()
 		this._t ++	
+		this.wrapBounds()
 	}
 })
 
-Movers.add(InterleveMover)
+Movers.add(YInterleveMover)
+
+
+XInterleveMover = Mover.clone().newSlots({
+	protoType: "XInterleveMover",
+	speed: 10,
+}).setSlots({
+	update: function() 
+	{	
+		var direction = this.thing().groupX() % 2 == 0 ? 1 : -1
+		this.object().position.y += direction * this.speed()
+		this._t ++	
+		this.wrapBounds()
+	}
+})
+
+Movers.add(XInterleveMover)
 
 // ------------------------------------------------------------------
 
@@ -79,7 +96,7 @@ RotateMover = Mover.clone().newSlots({
 }).setSlots({
 	update: function(dt) 
 	{	
-		this.object().rotation.z += dt/this.period()
+		//this.object().rotation.z += dt/this.period()
 		this._t ++	
 	}
 })
@@ -121,20 +138,13 @@ ZoomOutMover = Mover.clone().newSlots({
 		this._t ++	
 */
 		this.object().position.z += this.dz()*10
-		if (this.object().position.z > 1200)
-		{
-			this.object().position.z = -1800
-		}
-		
-		if (this.object().position.z < -1800)
-		{
-			this.object().position.z = 1200
-		}
+		this.wrapBounds()
 	}
 })
 
 
 Movers.add(ZoomOutMover)
+Movers.add(ZoomOutMover.clone().setDz(-1))
 
 // ------------------------------------------------------------------
 

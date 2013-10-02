@@ -112,12 +112,12 @@ Group = Thing.clone().newSlots({
 		// color
 		var colorKeys = {
 			"Z": GrayColor(0), 
-			"X": GrayColor(.33), 
-			"C": GrayColor(.66), 
-			"V": GrayColor(1), 
-			"B": GrayColor(0), 
-			"N": new THREE.Color().setRGB(255, 0, 0), 
-			"M": new THREE.Color().setRGB(0, 0, 255)
+			"X": new THREE.Color().setRGB(255, 0, 0), 
+			"C": new THREE.Color().setRGB(0, 0, 255), 
+			"V": GrayColor(.3), 
+			"B": null, 
+			"N": null, 
+			"M": null
 		}
 		
 		var color = colorKeys[e.key]
@@ -158,7 +158,6 @@ Group = Thing.clone().newSlots({
 			this.setItemMover(e.key, moverProto.clone().prepareToMove())
 			return
 		}
-				
 	},
 	
 	setItemMover: function(name, m)

@@ -1,6 +1,6 @@
 
 ScanLinesGroup = Group.clone().newSlots({
-	protoType: "SquaresGroup",
+	protoType: "ScanLinesGroup",
 	items: null,
 	spacing: 27,
 	itemXScale: 1000,
@@ -23,6 +23,7 @@ ScanLinesGroup = Group.clone().newSlots({
 			s._object.scale.x = this._itemXScale
 			s._object.scale.y = this._itemYScale
 			s._object.position.y += y*this._spacing
+			s.setGroupY(y)
 			this.addItem(s)
 		}
 	}

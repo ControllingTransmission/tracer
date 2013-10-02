@@ -16,9 +16,9 @@ SquaresGroup = Group.clone().newSlots({
 	addSquares: function()
 	{
 		var max = this._max
-		for (var x = -max; x < max-1; x ++)
+		for (var x = -max; x < max+1; x ++)
 		{
-			for (var y = -max; y < max-1; y ++)
+			for (var y = -max; y < max+1; y ++)
 			{
 				var s = Square.clone()
 				s._object.scale.x = this._itemXScale

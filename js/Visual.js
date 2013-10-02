@@ -34,6 +34,7 @@ Visual = Proto.clone().newSlots({
 		
 		this.addLayer(BackgroundGroup.clone())
 		this.addLayer(SquaresGroup.clone().open())
+		//this.addLayer(ScanLinesGroup.clone().open())
 		
 		this.animate()	
 		document.body.style.backgroundColor = "red"
@@ -58,6 +59,7 @@ Visual = Proto.clone().newSlots({
 		container.appendChild(this.renderer().domElement);
 	},
 
+	/*
 	setupOrthoCamera: function()
 	{
 		var width = 10000
@@ -70,13 +72,14 @@ Visual = Proto.clone().newSlots({
 		this.camera().position.z = -1200;
 		this.camera().lookAt(new THREE.Vector3(0, 0, 0));		
 	},
+	*/
 		
 	setupPerspectiveCamera: function()
 	{		
-		this.setCamera(new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 1, 4000))
+		this.setCamera(new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 1, 8000))
 		this.camera().position.x = 0;
 		this.camera().position.y = 0;
-		this.camera().position.z = 1200;
+		this.camera().position.z = 1000;
 		this.camera().lookAt(new THREE.Vector3(0, 0, 0));		
 	},
 	
