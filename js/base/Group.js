@@ -34,7 +34,7 @@ Group = Thing.clone().newSlots({
 
 	update: function() 
 	{	
-		//Thing.update.apply(this)
+		Thing.update.apply(this)
 		if (!this.isPaused()) 
 		{
 			this.updateItems()	

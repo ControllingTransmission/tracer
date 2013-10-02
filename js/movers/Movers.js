@@ -28,6 +28,7 @@ BlueJitterColorMover = Mover.clone().newSlots({
 	{	
 		Mover.update.apply(this)
 		var mat = this.object().material
+		if (mat == null) { return }
 		var c = Math.random()
 		mat.color = new THREE.Color().setRGB(0, 0, c)
 		mat.needsUpdate = true
@@ -220,6 +221,7 @@ Movers.add(YScaleMover)
 
 
 // ------------------------------------------------------------------
+
 	
 WhiteJitterColorMover = Mover.clone().newSlots({
 	protoType: "WhiteJitterColorMover",
@@ -238,6 +240,7 @@ WhiteJitterColorMover = Mover.clone().newSlots({
 	{	
 		Mover.update.apply(this)
 		var mat = this.object().material
+		if (mat == null) { return }
 		var c = Math.random()
 		mat.color = new THREE.Color().setRGB(c, c, c)
 		mat.needsUpdate = true
