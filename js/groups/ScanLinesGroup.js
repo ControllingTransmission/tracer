@@ -10,7 +10,7 @@ ScanLinesGroup = Group.clone().newSlots({
 	init: function()
 	{
 		Group.init.apply(this)
-		this.addMover(MaxMover.clone())
+		//this.addMover(MaxMover.clone())
 		this.addSquares()
 	},
 	

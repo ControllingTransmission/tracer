@@ -123,10 +123,10 @@ ZoomOutMover = Mover.clone().newSlots({
 		this.object().position.z += this.dz()*10
 		if (this.object().position.z > 1200)
 		{
-			this.object().position.z = -2000
+			this.object().position.z = -1800
 		}
 		
-		if (this.object().position.z < -2000)
+		if (this.object().position.z < -1800)
 		{
 			this.object().position.z = 1200
 		}
