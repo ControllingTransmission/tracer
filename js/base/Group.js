@@ -162,8 +162,15 @@ Group = Thing.clone().newSlots({
 	
 	setItemMover: function(name, m)
 	{
-		console.log("setItemMover " + m.protoType())
-		this.items().forEach(function (item) { item.setMover(name, m.clone()) })
+		if (Keyboard.shiftKey)
+		{
+			this.setMover(name, m.clone())
+		}
+		else
+		{
+			//console.log("setItemMover " + m.protoType())
+			this.items().forEach(function (item) { item.setMover(name, m.clone()) })
+		}
 	},
 	
 	keyup: function(e)

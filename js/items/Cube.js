@@ -16,7 +16,7 @@ Cube = Thing.clone().newSlots({
 			{
 				color: new THREE.Color().setRGB(0,0,0), 
 				wireframe: false, 
-				wireframeLinewidth: 6,
+				wireframeLinewidth: 1,
 				opacity: 1,
 				transparent: true
 			} );

@@ -24,6 +24,7 @@ Visual = Proto.clone().newSlots({
 	
 	removeLayer: function(layer)
 	{
+		layer.close()
 		this.layers().remove(layer)
 		return this
 	},
@@ -34,6 +35,7 @@ Visual = Proto.clone().newSlots({
 		
 		this.addLayer(BackgroundGroup.clone())
 		this.addLayer(SquaresGroup.clone().open())
+		//this.addLayer(CubesGroup.clone().open())
 		//this.addLayer(ScanLinesGroup.clone().open())
 		
 		this.animate()	
@@ -175,6 +177,8 @@ Visual = Proto.clone().newSlots({
 	
 	keydown: function(e)
 	{
+		Keyboard.shiftKey = e.shiftKey
+		console.log("Keyboard.shiftKey " + Keyboard.shiftKey)
 		// track down key to avoid key repeats
 		if (this.downKeys()[e.keyCode]) 
 		{
@@ -210,6 +214,7 @@ Visual = Proto.clone().newSlots({
 	},
 })
 
+Keyboard = {}
 
 /*
 Keyboard.shiftKey = e.shiftKey

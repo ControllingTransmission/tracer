@@ -14,10 +14,10 @@ BackgroundGroup = Group.clone().newSlots({
 		console.log("Background keydown '" + e.key + "' ", e.keyCode)
 		
 		var colorKeys = {
-			"Z": GrayColor(0), 
+			"Z": GrayColor(.17), 
 			"X": new THREE.Color().setRGB(255, 0, 0), 
 			"C": new THREE.Color().setRGB(0, 0, 255), 
-			"V": GrayColor(.3), 
+			"V": null, 
 			"B": null, 
 			"N": null, 
 			"M": null
@@ -28,7 +28,6 @@ BackgroundGroup = Group.clone().newSlots({
 		{
 			this.setColor(color)
 		}
-		
 	},
 	
 	keyup: function()
@@ -38,7 +37,7 @@ BackgroundGroup = Group.clone().newSlots({
 	setColor: function(c)
 	{
 		var s = "rgb(" + Math.floor(c.r*255) + ", " + Math.floor(c.g*255) + ", " + Math.floor(c.b*255) + ")"
-		console.log(this.protoType() + " set " + s)
+		//console.log(this.protoType() + " set " + s)
 		document.body.style.backgroundColor = s
 		return this
 	}

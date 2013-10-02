@@ -39,22 +39,6 @@ Movers.add(ColorMover)
 
 // ------------------------------------------------------------------
 
-YInterleveMover = Mover.clone().newSlots({
-	protoType: "YInterleveMover",
-	speed: 10,
-}).setSlots({
-	update: function() 
-	{	
-		var direction = this.thing().groupY() % 2 == 0 ? 1 : -1
-		this.object().position.x += direction * this.speed()
-		this._t ++	
-		this.wrapBounds()
-	}
-})
-
-Movers.add(YInterleveMover)
-
-
 XInterleveMover = Mover.clone().newSlots({
 	protoType: "XInterleveMover",
 	speed: 10,
@@ -70,9 +54,24 @@ XInterleveMover = Mover.clone().newSlots({
 
 Movers.add(XInterleveMover)
 
+YInterleveMover = Mover.clone().newSlots({
+	protoType: "YInterleveMover",
+	speed: 10,
+}).setSlots({
+	update: function() 
+	{	
+		var direction = this.thing().groupY() % 2 == 0 ? 1 : -1
+		this.object().position.x += direction * this.speed()
+		this._t ++	
+		this.wrapBounds()
+	}
+})
+
+Movers.add(YInterleveMover)
+
 // ------------------------------------------------------------------
 
-
+/*
 JitterMover = Mover.clone().newSlots({
 	protoType: "JitterMover",
 	amplitude: 3
@@ -80,29 +79,62 @@ JitterMover = Mover.clone().newSlots({
 	
 	update: function() 
 	{	
-		this.object().position.x = this.thing().groupPos().x + (Math.random() - .5) * this.amplitude()
-		this.object().position.y = this.thing().groupPos().y + (Math.random() - .5) * this.amplitude()
+		if (this._t < 10)
+		{
+			this.object().position.x = this.thing().groupPos().x + (Math.random() - .5) * this.amplitude()
+			this.object().position.y = this.thing().groupPos().y + (Math.random() - .5) * this.amplitude()
+			this.object().position.z = this.thing().groupPos().y + (Math.random() - .5) * this.amplitude()
+		}
 		this._t ++	
 	}
 })
 
 Movers.add(JitterMover)
+*/
 
 // ------------------------------------------------------------------
 
-RotateMover = Mover.clone().newSlots({
-	protoType: "RotateMover",
+/*
+XRotateMover = Mover.clone().newSlots({
+	protoType: "XRotateMover",
 	period: 100
 }).setSlots({
 	update: function(dt) 
 	{	
-		//this.object().rotation.z += dt/this.period()
+		this.object().rotation.x += dt/this.period()
 		this._t ++	
 	}
 })
 
-Movers.add(RotateMover)
+Movers.add(XRotateMover)
 
+
+YRotateMover = Mover.clone().newSlots({
+	protoType: "XRotateMover",
+	period: 100
+}).setSlots({
+	update: function(dt) 
+	{	
+		this.object().rotation.y += dt/this.period()
+		this._t ++	
+	}
+})
+
+Movers.add(YRotateMover)
+*/
+
+ZRotateMover = Mover.clone().newSlots({
+	protoType: "XRotateMover",
+	period: 100
+}).setSlots({
+	update: function(dt) 
+	{	
+		this.object().rotation.z += dt/this.period()
+		this._t ++	
+	}
+})
+
+Movers.add(ZRotateMover)
 
 // ------------------------------------------------------------------
 
@@ -147,5 +179,43 @@ Movers.add(ZoomOutMover)
 Movers.add(ZoomOutMover.clone().setDz(-1))
 
 // ------------------------------------------------------------------
+
+
+
+XScaleMover = Mover.clone().newSlots({
+	protoType: "XScaleMover",
+	dz: .001
+}).setSlots({
+	update: function(dt) 
+	{	
+		this.object().scale.x += this.dz()*10
+		
+		if (this.object().scale.x > 2 || this.object().scale.x < .01)
+		{
+			this.setDz(-this.dz())
+		}
+		this.wrapBounds()
+	}
+})
+
+Movers.add(XScaleMover)
+
+YScaleMover = Mover.clone().newSlots({
+	protoType: "YScaleMover",
+	dz: .001
+}).setSlots({
+	update: function(dt) 
+	{	
+		this.object().scale.y += this.dz()*10
+		
+		if (this.object().scale.y > 1.5 || this.object().scale.y < .01)
+		{
+			this.setDz(-this.dz())
+		}
+		this.wrapBounds()
+	}
+})
+
+Movers.add(YScaleMover)
 
 
