@@ -1,6 +1,6 @@
 
 CubesGroup = Group.clone().newSlots({
-	protoType: "SquaresGroup",
+	protoType: "CubesGroup",
 	items: null,
 	spacing: 500,
 	itemXScale: 1,
@@ -11,8 +11,6 @@ CubesGroup = Group.clone().newSlots({
 	init: function()
 	{
 		Group.init.apply(this)
-		this.addMover(MaxMover.clone())
-		this.addMover(WaveMover.clone())
 		this.addSquares()
 	},
 	
@@ -27,10 +25,9 @@ CubesGroup = Group.clone().newSlots({
 				s._object.scale.x = this._itemXScale
 				s._object.scale.y = this._itemYScale
 				s._object.scale.z = this._itemZScale
-				s.addMover(MaxMover.clone())
-				// s.addMover(XWaveMover.clone())
 				s._object.position.x += x*this._spacing
 				s._object.position.y += y*this._spacing
+				s.setGroupX(x).setGroupY(y).setGroupZ(0)
 				this.addItem(s)
 			}
 		}

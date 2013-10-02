@@ -9,10 +9,22 @@ MaxMover = Mover.clone().newSlots({
 	init: function()
 	{
 		Mover.init.apply(this)
+		/*
 		var dt = .002
 		this._rd = new THREE.Vector3(0, dt*this._speed, dt*this._speed)
 		this._zd = 1
 		this._nextShift = 3*60
+		*/
+		this.setRate(1)
+	},
+	
+	setRate: function(r)
+	{
+		this._rate = r
+		var dt = .002
+		this._rd = new THREE.Vector3(0, dt*r*this._speed, dt*r*this._speed)
+		this._zd = 1*r
+		this._nextShift = 3*60/r
 	},
 	
 	object: function()
@@ -20,8 +32,9 @@ MaxMover = Mover.clone().newSlots({
 		return this._thing._object
 	},
 	
-	update: function() 
+	update: function(dt) 
 	{	
+		//this.setRate(dt)
 		Mover.update.apply(this)
 		
 		var obj = this.object()

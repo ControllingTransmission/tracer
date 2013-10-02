@@ -3,12 +3,22 @@
 Thing = Proto.clone().newSlots({
 	protoType: "Thing",
 	object: null,
+	groupPos: null,
 	movers: null,
-	t: 0
+	t: 0,
+	groupX: 0,
+	groupY: 0,
+	groupZ: 0
 }).setSlots({
 	init: function()
 	{
-		this._movers = []
+		this._movers = {}
+	},
+	
+	setGroupPosToCurrent: function()
+	{
+		this.setGroupPos(this.object().position.clone())
+		return this
 	},
 
 	open: function()
@@ -23,25 +33,59 @@ Thing = Proto.clone().newSlots({
 		return this
 	},
 	
-	addMover: function(mover)
+	setMover: function(name, m)
 	{
-		mover.setThing(this)
-		this._movers.push(mover)
+		if (this.movers()[name])
+		{
+			delete this.movers()[name]
+		}
+		else
+		{
+			this.movers()[name] = m
+			m.setThing(this)
+		}
+		
 		return this
 	},
 	
-	update: function() 
+	update: function(dt) 
 	{			
-		this._movers.forEach(function (mover) { mover.update() })
+		//this.movers().forEach(function (k, mover) { mover.update(dt) })
+		for (var k in this.movers())
+		{
+			var mover = this._movers[k]
+			mover.update(dt)
+		}
 	},
 	
 	setColor: function (c)
 	{
-		console.log("setting color")
 		var mat = this.object().material
 		mat.color = c
 		mat.needsUpdate = true
 		return this
-	}
+	},
+	
+	toggleWireframe: function()
+	{
+		var mat = this.object().material
+		mat.wireframe = !mat.wireframe
+		mat.needsUpdate = true
+		return this
+	},
+	
+	increaseAlpha: function()
+	{
+		var mat = this.object().material
+		mat.opacity = 1
+		mat.needsUpdate = true
+	},
+	
+	decreaseAlpha: function()
+	{
+		var mat = this.object().material
+		mat.opacity = .25
+		mat.needsUpdate = true
+	},	
 })
 

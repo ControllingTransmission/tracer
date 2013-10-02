@@ -10,14 +10,19 @@ Mover = Proto.clone().newSlots({
 	{
 	},
 	
+	prepareToMove: function()
+	{
+		return this
+	},
+	
 	object: function()
 	{
 		return this._thing._object
 	},
 	
-	update: function() 
+	update: function(dt) 
 	{	
-		this._t += this._rate
+		this._t += dt*this._rate
 	}
 })
 

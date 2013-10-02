@@ -10,7 +10,7 @@ Square = Thing.clone().newSlots({
 	
 	setup: function()
 	{		
-		var geometry = new THREE.PlaneGeometry(500, 500, 1, 1);
+		var geometry = new THREE.PlaneGeometry(500, 500, 10, 10);
 		
 		var material = new THREE.MeshLambertMaterial( 
 			{

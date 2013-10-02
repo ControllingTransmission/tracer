@@ -10,9 +10,6 @@ SquaresGroup = Group.clone().newSlots({
 	init: function()
 	{
 		Group.init.apply(this)
-		this.addMover(MaxMover.clone())
-		this.addMover(WaveMover.clone())
-		this.addMover(ColorMover.clone())
 		this.addSquares()
 	},
 	
@@ -26,9 +23,9 @@ SquaresGroup = Group.clone().newSlots({
 				var s = Square.clone()
 				s._object.scale.x = this._itemXScale
 				s._object.scale.y = this._itemYScale
-				s.addMover(MaxMover.clone())
 				s._object.position.x += x*this._spacing
 				s._object.position.y += y*this._spacing
+				s.setGroupX(x).setGroupY(y)
 				this.addItem(s)
 			}
 		}
