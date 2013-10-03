@@ -62,6 +62,21 @@ Thing = Proto.clone().newSlots({
 		
 		return this
 	},
+
+	removeMover: function(aMover)
+	{
+		for (var name in this.movers())
+		{
+			var m = this.movers()[name]
+			if (m == aMover)
+			{
+				m.prepareToStop()
+				delete this.movers()[name]
+			}
+		}
+
+		return this
+	},
 	
 	update: function(dt) 
 	{			

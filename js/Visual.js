@@ -39,7 +39,6 @@ Visual = Proto.clone().newSlots({
 		//this.addLayer(ScanLinesGroup.clone().open())
 		
 		this.animate()	
-		document.body.style.backgroundColor = "red"
 	},
 
 	setup: function()

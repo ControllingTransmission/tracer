@@ -56,6 +56,13 @@ Group = Thing.clone().newSlots({
 		this.items().forEach(function (item) { item.setColor(c) })
 		return this
 	},
+
+	setMaterial: function(m)
+	{
+		console.log("setting group material")
+		this.items().forEach(function (item) { item.setMaterial(m) })
+		return this
+	},
 	
 	toggleIsPaused: function()
 	{
