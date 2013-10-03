@@ -145,6 +145,7 @@ LeapMotionBackgroundGreyMover = Mover.clone().newSlots({
 	{	
 		Mover.update.apply(this)
 		var hand = LeapMotion._hands[0]
+		if(typeof hand == "undefined") return
 		var x = hand.palmPosition[0];
 		var y = hand.palmPosition[1];
 		var z = hand.palmPosition[2];
@@ -179,6 +180,7 @@ LeapMotionBackgroundHueMover = Mover.clone().newSlots({
 	{	
 		Mover.update.apply(this)
 		var hand = LeapMotion._hands[0]
+		if(typeof hand == "undefined") return
 		var x = hand.palmPosition[0];
 		var y = hand.palmPosition[1];
 		var z = hand.palmPosition[2];
